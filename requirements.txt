@@ -1,0 +1,11 @@
+Django==1.5.1
+Pillow==2.0.0
+South==0.8.1
+django-extensions==1.1.1
+django-userena==1.2.1
+
+django-reversion
+
+# cms
+django-cms==2.4.1
+djangocms-text-ckeditor==1.0.10

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load sekizai_tags %}
+
+
+{% block content %}
+
+{% addtoblock 'css' %}
+<link href="{{ STATIC_URL }}css/homepage.css" rel="stylesheet" media="screen">
+{% endaddtoblock %}
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="{{ STATIC_URL }}img/home/carpooling.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Show your lifestyle</h1>
+              <p class="lead"><strong>Covoitureur</strong> ? <strong>Couchsurfeur</strong> ? <strong>Prêteur d'objets</strong> ? Revendiquez votre <strong>activité citoyenne</strong> et facilitez le passage à l'acte de ceux qui hésitent encore à utiliser ces services.</p>
+              <a class="btn btn-large btn-primary" href="#">Join and show the world!</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="{{ STATIC_URL }}img/home/couch.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Can you trust me?</h1>
+              <p class="lead">Les <strong>recommandations</strong> sur des sites comme couchsurfing ont une valeur inestimable. En rassemblant celles de tous les sites de partage, cela devient votre outil pour <strong>établir la confiance avec des tiers</strong>...</p>
+              <a class="btn btn-large btn-primary" href="#">Discover the community</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="{{ STATIC_URL }}img/home/cooking.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Discover new services</h1>
+              <p class="lead">Naviguez vers de nouveaux services dont vous n'imaginiez même pas l'existence. Votre propre voisin partage peut-être sa cuisine du jour ?</p>
+              <a class="btn btn-large btn-primary" href="#">Browse & discover...</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>SocialBadges?</h2>
+          <p>
+	    SocialBadges permet de rassembler sur une seule page l'ensemble des services de collaboration et de citoyenneté que vous utilisez. Vous pouvez mettre en lien vos profils sur ces sites. Un bon moyen pour révéler la richesse des données construites sur ces plateformes.
+	  </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>Contribuez</h2>
+          <p>
+	    Social Badges est un <strong>bien commun</strong> développé sous licence libre (AGPL). Cette plateforme vous appartient, les données que vous y assemblez aussi. Construit en logique contributive, chacun peut participer à sa construction.
+	  </p>
+          <p><a class="btn" href="#">{% trans "Join the discussion" %} &raquo;</a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>Support & donate</h2>
+	  <p>
+	    Pour encourager le projet (nouvelles fonctionnalités, amélioration, ...), vous pouvez faire des micro-dons. C'est ce qui nous permet d'éviter d'avoir à mettre en place des modèles économiques pervers (ex: publicité) ou de faire intervenir des investisseurs extérieurs non concernés par la finalité du projet. Cette page affiche l'ensemble des dépenses réalisées et leurs bénéficiaires.
+	  </p>
+          <p><a class="btn" href="#">{% trans "Make a donation" %} &raquo;</a></p>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+
+    <div class="container">
+      <!-- FOOTER -->
+      <footer>
+        <p>&copy; 2013 Chuck Norris, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+{% endblock %}
