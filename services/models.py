@@ -10,8 +10,12 @@ class ServiceCategory(models.Model):
     def __unicode__(self):
         return self.name
 
+def badge_upload(instance, filename):
+    return filename
+        
 class ServiceBadge(models.Model):
     description = models.CharField(max_length=255)
+    picture = models.ImageField(upload_to=badge_upload, null=True, blank=True)
  
     def __unicode__(self):
         return self.description

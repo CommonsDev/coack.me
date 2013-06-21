@@ -24,7 +24,7 @@
           <div class="nav-collapse collapse navbar-inverse-collapse">
             <ul class="nav">
               <li><a href="{% url 'userena_profile_list' %}">{% trans "Browse profiles" %}</a></li>
-              <li><a href="#">{% trans "Discover services" %}</a></li>
+              <!-- <li><a href="#">{% trans "Discover services" %}</a></li>-->
               <li><a href="#">{% trans "About" %}</a></li>
             </ul>
             <ul class="nav pull-right">	      
@@ -32,20 +32,30 @@
 		<input type="text" class="search-query span2" placeholder="{% trans "Search people" %}">
               </form>
               <li class="divider-vertical"></li>
+	      {% if not user.is_anonymous %}
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i>&nbsp;{{ user.get_profile.get_full_name_or_username}} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-		  {% if not user.is_anonymous %}
                   <li><a href="{% url 'userena_profile_detail' user.username %}">{% trans "My profile" %}</a></li>
-		  {% endif %}
 		  {% if user.is_staff %}
 		  <li class="divider"></li>
 		  <li><a href="#">{% trans "Administration" %}</a></li>
 		  {% endif %}
                   <li class="divider"></li>
-                  <li><a href="#">{% trans "Logout" %}</a></li>
+                  <li><a href="{% url 'userena_signout' %}">{% trans "Logout" %}</a></li>
                 </ul>
               </li>
+	      {% else %}
+	      <li>
+		<p class="navbar-text">{% trans "Connect with:" %}</p>
+	      </li>
+	      <li>
+		<a rel="nofollow" href="{% url 'socialauth_begin' 'google-oauth2' %}"><img width="20px" src="{{ STATIC_URL }}img/google_login_icon.png" alt="Google"></a>
+	      </li>
+	      <li>
+		<a rel="nofollow" href="{% url 'socialauth_begin' 'facebook' %}"><img width="20px" src="{{ STATIC_URL }}img/facebook_login_icon.png" alt="Facebook"></a>
+	      </li>
+	      {% endif %}
             </ul>
           </div><!-- /.nav-collapse -->
         </div>

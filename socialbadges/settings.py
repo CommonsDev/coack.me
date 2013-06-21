@@ -137,6 +137,10 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
                                "django.core.context_processors.request",
                                "django.core.context_processors.tz",
                                "django.contrib.messages.context_processors.messages",
+                               'social_auth.context_processors.social_auth_by_name_backends',
+                               'social_auth.context_processors.social_auth_backends',
+                               'social_auth.context_processors.social_auth_by_type_backends',
+                               'social_auth.context_processors.social_auth_login_redirect',                               
                                'cms.context_processors.media',
                                'sekizai.context_processors.sekizai',)
 
@@ -159,7 +163,8 @@ INSTALLED_APPS = (
     'django_extensions',
     'sekizai',
     'reversion',
-
+    'social_auth',
+    
     'cms',
     'mptt',
     'menus',
@@ -170,10 +175,17 @@ INSTALLED_APPS = (
 )
 
 AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'social_auth.backends.google.GoogleOAuthBackend',        
+    'social_auth.backends.google.GoogleBackend',    
+    'social_auth.backends.browserid.BrowserIDBackend',
+    
     'userena.backends.UserenaAuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -204,10 +216,23 @@ LOGGING = {
     }
 }
 
+# SOCIAL AUTH
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.user.get_username',
+    'social_auth.backends.pipeline.user.create_user',
+    'accounts.models.create_profile',
+    'accounts.models.set_guardian_permissions',    
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details'
+)
+
 # USERENA
-LOGIN_REDIRECT_URL = '/u/%(username)s/'
+LOGIN_REDIRECT_URL = '/u/'
 LOGIN_URL = '/u/signin/'
-LOGOUT_URL = '/u/signout/'
+LOGOUT_URL = '/u/signout/?next=/'
+USERENA_DEFAULT_PRIVACY = 'open'
 
 ANONYMOUS_USER_ID = -1
 AUTH_PROFILE_MODULE = 'accounts.Profile'
@@ -216,3 +241,9 @@ AUTH_PROFILE_MODULE = 'accounts.Profile'
 CMS_TEMPLATES = (
     ('index.html', 'Homepage'),
 )
+
+# SOCIAL
+SOCIAL_AUTH_RAISE_EXCEPTIONS = DEBUG
+
+from site_settings import *
+
