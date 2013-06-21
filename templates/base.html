@@ -61,9 +61,20 @@
         </div>
       </div><!-- /navbar-inner -->
     </div>
-    {% block content %}
-    <h1>Hello, world!</h1>
-    {% endblock %}
+    
+    <div class="container">
+		 <div class="row">
+			
+		
+			<div class="span9">
+        {% placeholder "Body" or %}
+        {% trans "There is no content yet. Switch to edit mode and add a widget." %}
+        {% endplaceholder %}
+			</div>	
+			<div class="span3">
+			</div>
+		</div>
+    </div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     {% render_block "js" %}

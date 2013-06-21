@@ -169,7 +169,6 @@ INSTALLED_APPS = (
     'mptt',
     'menus',
     'djangocms_text_ckeditor',
-    
     'accounts',
     'services',
 )
@@ -240,6 +239,7 @@ AUTH_PROFILE_MODULE = 'accounts.Profile'
 # CMS
 CMS_TEMPLATES = (
     ('index.html', 'Homepage'),
+    ('base.html', 'Page'),
 )
 
 # SOCIAL

@@ -2,7 +2,7 @@
 
 {% load i18n %}
 {% load sekizai_tags %}
-
+{% load cms_tags %}  
 
 {% block content %}
 
@@ -19,9 +19,22 @@
           <img src="{{ STATIC_URL }}img/home/carpooling.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Show your lifestyle</h1>
-              <p class="lead"><strong>Covoitureur</strong> ? <strong>Couchsurfeur</strong> ? <strong>Prêteur d'objets</strong> ? Revendiquez votre <strong>activité citoyenne</strong> et facilitez le passage à l'acte de ceux qui hésitent encore à utiliser ces services.</p>
-              <a class="btn btn-large btn-primary" href="#">Join and show the world!</a>
+				<h1>
+					{% placeholder "carousel_one_title" or%}
+					Show your lifestyle
+					{% endplaceholder %}
+				</h1>
+			<div class="lead">
+					{% placeholder "carousel_one_text" or%}
+					<strong>Covoitureur</strong> ? <strong>Couchsurfeur</strong> ? <strong>Prêteur d'objets</strong> ? Revendiquez votre <strong>activité citoyenne</strong> et facilitez le passage à l'acte de ceux qui hésitent encore à utiliser ces services.
+					{% endplaceholder %}
+			</div>
+				<a class="btn btn-large btn-primary" href="#">
+					{% placeholder "carousel_one_button_join" or%}
+					Join and show the world!
+					{% endplaceholder %}
+				</a>
+					
             </div>
           </div>
         </div>
@@ -29,9 +42,21 @@
           <img src="{{ STATIC_URL }}img/home/couch.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Can you trust me?</h1>
-              <p class="lead">Les <strong>recommandations</strong> sur des sites comme couchsurfing ont une valeur inestimable. En rassemblant celles de tous les sites de partage, cela devient votre outil pour <strong>établir la confiance avec des tiers</strong>...</p>
-              <a class="btn btn-large btn-primary" href="#">Discover the community</a>
+				<h1>
+					{% placeholder "carousel_two_title" or%}
+					Can you trust me?
+					{% endplaceholder %}
+				</h1>
+				<div class="lead">
+					{% placeholder "carousel_two_text" or%}
+					Les <strong>recommandations</strong> sur des sites comme couchsurfing ont une valeur inestimable. En rassemblant celles de tous les sites de partage, cela devient votre outil pour <strong>établir la confiance avec des tiers</strong>...
+					{% endplaceholder %}
+				</div>
+				<a class="btn btn-large btn-primary" href="#">
+					{% placeholder "carousel_two_button_join" or%}
+					Discover the community
+					{% endplaceholder %}
+				</a>
             </div>
           </div>
         </div>
@@ -39,9 +64,21 @@
           <img src="{{ STATIC_URL }}img/home/cooking.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Discover new services</h1>
-              <p class="lead">Naviguez vers de nouveaux services dont vous n'imaginiez même pas l'existence. Votre propre voisin partage peut-être sa cuisine du jour ?</p>
-              <a class="btn btn-large btn-primary" href="#">Browse & discover...</a>
+				<h1>
+					{% placeholder "carousel_three_title" or%}
+					Discover new services
+					{% endplaceholder %}
+				</h1>
+				<div class="lead">
+					{% placeholder "carousel_three_text" or%}
+					Naviguez vers de nouveaux services dont vous n'imaginiez même pas l'existence. Votre propre voisin partage peut-être sa cuisine du jour ?
+					{% endplaceholder %}
+				</div>
+				<a class="btn btn-large btn-primary" href="#">
+					{% placeholder "carousel_three_button_join" or%}
+					>Browse & discover...
+					{% endplaceholder %}
+				</a>
             </div>
           </div>
         </div>
@@ -57,26 +94,32 @@
       <div class="row">
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">
-          <h2>SocialBadges?</h2>
-          <p>
-	    SocialBadges permet de rassembler sur une seule page l'ensemble des services de collaboration et de citoyenneté que vous utilisez. Vous pouvez mettre en lien vos profils sur ces sites. Un bon moyen pour révéler la richesse des données construites sur ces plateformes.
-	  </p>
+			{% placeholder "text_bottom_1" or%}
+			<h2>SocialBadges?</h2>
+			<p>
+			SocialBadges permet de rassembler sur une seule page l'ensemble des services de collaboration et de citoyenneté que vous utilisez. Vous pouvez mettre en lien vos profils sur ces sites. Un bon moyen pour révéler la richesse des données construites sur ces plateformes.
+			</p>
+			{% endplaceholder %}
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div><!-- /.span4 -->
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">
+          {% placeholder "text_bottom_2" or%}
           <h2>Contribuez</h2>
           <p>
-	    Social Badges est un <strong>bien commun</strong> développé sous licence libre (AGPL). Cette plateforme vous appartient, les données que vous y assemblez aussi. Construit en logique contributive, chacun peut participer à sa construction.
-	  </p>
+			  Social Badges est un <strong>bien commun</strong> développé sous licence libre (AGPL). Cette plateforme vous appartient, les données que vous y assemblez aussi. Construit en logique contributive, chacun peut participer à sa construction.
+		  </p>
+		  {% endplaceholder %}
           <p><a class="btn" href="#">{% trans "Join the discussion" %} &raquo;</a></p>
         </div><!-- /.span4 -->
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">
+          {% placeholder "text_bottom_2" or%}
           <h2>Support & donate</h2>
-	  <p>
-	    Pour encourager le projet (nouvelles fonctionnalités, amélioration, ...), vous pouvez faire des micro-dons. C'est ce qui nous permet d'éviter d'avoir à mettre en place des modèles économiques pervers (ex: publicité) ou de faire intervenir des investisseurs extérieurs non concernés par la finalité du projet. Cette page affiche l'ensemble des dépenses réalisées et leurs bénéficiaires.
-	  </p>
+          <p>
+          Pour encourager le projet (nouvelles fonctionnalités, amélioration, ...), vous pouvez faire des micro-dons. C'est ce qui nous permet d'éviter d'avoir à mettre en place des modèles économiques pervers (ex: publicité) ou de faire intervenir des investisseurs extérieurs non concernés par la finalité du projet. Cette page affiche l'ensemble des dépenses réalisées et leurs bénéficiaires.
+          </p>
+          {% endplaceholder %}
           <p><a class="btn" href="#">{% trans "Make a donation" %} &raquo;</a></p>
         </div><!-- /.span4 -->
       </div><!-- /.row -->
