@@ -25,7 +25,7 @@
             <ul class="nav">
               <li><a href="{% url 'userena_profile_list' %}">{% trans "Browse profiles" %}</a></li>
               <!-- <li><a href="#">{% trans "Discover services" %}</a></li>-->
-              <li><a href="#">{% trans "About" %}</a></li>
+              <li><a href="/about/">{% trans "About" %}</a></li>
             </ul>
             <ul class="nav pull-right">	      
               <form class="navbar-search pull-left" action="">
@@ -61,20 +61,9 @@
         </div>
       </div><!-- /navbar-inner -->
     </div>
-    
-    <div class="container">
-		 <div class="row">
-			
-		
-			<div class="span9">
-        {% placeholder "Body" or %}
-        {% trans "There is no content yet. Switch to edit mode and add a widget." %}
-        {% endplaceholder %}
-			</div>	
-			<div class="span3">
-			</div>
-		</div>
-    </div>
+    {% block content %}
+    <h1>Hello, world!</h1>
+    {% endblock %}
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     {% render_block "js" %}

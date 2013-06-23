@@ -239,7 +239,7 @@ AUTH_PROFILE_MODULE = 'accounts.Profile'
 # CMS
 CMS_TEMPLATES = (
     ('index.html', 'Homepage'),
-    ('base.html', 'Page'),
+    ('page.html', 'Page'),
 )
 
 # SOCIAL
