@@ -22,6 +22,9 @@ class UserService(models.Model):
     """
     Link a user to a service and stores his username
     """
+    class Meta:
+        unique_together = ('profile', 'service')
+    
     profile = models.ForeignKey(Profile, related_name='service_detailed')
     service = models.ForeignKey(Service)
     username = models.CharField(max_length=255)

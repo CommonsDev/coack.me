@@ -24,6 +24,10 @@
 
       {% trans "Age" %}: {{ profile.age|default:"??" }}
 
+      <div class="row">
+	<a href="{% url 'service-add' %}">Ajouter un service</a>
+      </div>
+      
       <!-- services -->
       <div class="row">
 	{% for service_detailed in profile.service_detailed.all %}
@@ -31,7 +35,7 @@
 	<ul>
 	{% for badge in service.badges.all %}
 	  <li>
-	    <img width="40px" src="{{ STATIC_URL }}img/badges/_default.jpg" class="img-circle">&nbsp;<strong>{{ badge.description }}</strong> -- <i>vous avez ce badge car vous utilisez <a href="{{ service.website }}">{{ service.name }}</a></i> [<a target="_new" href="{{ service.profile_url_template }}{{ service_detailed.username }}">Profile</a>]
+	    <img width="40px" src="{{ STATIC_URL }}img/badges/_default.jpg" class="img-circle">&nbsp;<strong>{{ badge.description }}</strong> -- <i>vous avez ce badge car vous utilisez <a href="{{ service.website }}">{{ service.name }}</a></i>[<a href="{% url 'service-del' service_detailed.id %}">X</a>] [<a target="_new" href="{{ service.profile_url_template }}{{ service_detailed.username }}">Profile</a>]
 	  </li>
 	{% endfor %}
 	</ul>
