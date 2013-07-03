@@ -63,6 +63,22 @@
         </div>
       </div><!-- /navbar-inner -->
     </div>
+
+    <!-- alert messages -->
+    {% if messages %}
+    <div class="container">
+      {% for message in messages %}
+        <div class="alert alert-block alert-{{ message.tags }}">
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	  {% if 'success' in message.tags %}
+	  <i class="icon-ok"></i>
+	  {% endif %}
+	  {{ message }}
+	</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
     {% block content %}
     <h1>Hello, world!</h1>
     {% endblock %}

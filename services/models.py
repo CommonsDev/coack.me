@@ -1,3 +1,4 @@
+import os
 from django.db import models
 
 # Create your models here.
@@ -11,26 +12,30 @@ class ServiceCategory(models.Model):
         return self.name
 
 def badge_upload(instance, filename):
-    return filename
+    return os.path.join("badges", filename)
 
+def badgecat_upload(instance, filename):
+    return os.path.join("badgecats", filename)
 
 class ServiceBadgeCategory(models.Model):
     """
     A category for the badges
     """
     name = models.CharField(max_length=255)
-
+    picture = models.ImageField(upload_to=badgecat_upload, null=True, blank=True)
+    
     def __unicode__(self):
         return self.name
     
     
 class ServiceBadge(models.Model):
+    name = models.CharField(max_length=20)
     description = models.CharField(max_length=255)
     picture = models.ImageField(upload_to=badge_upload, null=True, blank=True)
     category = models.ForeignKey(ServiceBadgeCategory)
  
     def __unicode__(self):
-        return self.description
+        return u"%s (%s)" % (self.name, self.description)
 
 class Service(models.Model):
     """

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load sekizai_tags %}
 
 {% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
 {% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
@@ -7,6 +8,14 @@
 {% block content %}
 <div class="container">
 
+{% addtoblock 'js' %}
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.popinfo').popover({placement: 'top', trigger: 'hover', html: true});
+  $('.tipinfo').tooltip({placement: 'top'});
+});
+</script>
+{% endaddtoblock %}
   <div class="row">
     <div class="span9">
       <div class="media">
@@ -22,12 +31,14 @@
       </div>
 
       <!-- buttons -->
+      {% if profile.user == user %}
       <div class="row">
 	<div class="offset5 span4 pull-right">
 	  <a class="btn btn-small" href="{% url 'service-add' %}"><i class="icon-plus-sign"></i>&nbsp;{% trans "Add a service" %}</a>
 	  <a class="btn btn-small" href="{% url 'profile-edit' user.username %}"><i class="icon-edit"></i>&nbsp;{% trans "edit your profile"|capfirst %}</a>
 	</div>
       </div>
+      {% endif %}
 
       <br/>
       
@@ -43,17 +54,25 @@
 	<div class="span7 pull-right">
 	    {% for badge in category.list %}
 	    <div class="media">
-	      <a class="pull-left" href="#">
+	      <div class="pull-left tipinfo" data-title="{{ badge.description }}">
 		<img width="40px" class="media-object" src="{{ STATIC_URL }}img/badges/_default.jpg" class="img-circle">
-	      </a>
+	      </div>
 	      <div class="media-body">
-		<h5 class="media-heading">{{ badge.description }}</h5>
+		<h5 class="media-heading">{{ badge.name }}</h5>
 		<i>Vous avez ce badge car vous utilisez</i>
 		<ul>
 		  {% for service in badge.user_services %}
 		  <li>
-		    <a href="{{ service.service.website }}">{{ service.service.name }}</a>
-		    [<a href="{% url 'service-del' service.id %}"><i class="icon-remove-sign"></i></a>] [<a target="_new" href="{{ service.service.profile_url_template }}{{ service.username }}">Profile</a>]
+		    <a class="popinfo" 
+		       data-title="<a href='{{ service.service.website }}'>{{ service.service.name }}</a>" 
+		       data-content="<img src='{{ service.service.logo_url }}' alt='{{ service.service.name }}'/><br/>{{ service.service.description }}"
+		       href="{{ service.service.website }}"
+		       >{{ service.service.name }}
+		    </a>
+		    {% if profile.user == user %}
+		    <a href="{% url 'service-del' service.id %}"><i class="icon-remove-sign"></i></a>
+		    {% endif %}
+		    [<a target="_new" href="{{ service.service.profile_url_template }}{{ service.username }}">{% trans "Profile" %}</a>]
 		  </li>
 		  {% endfor %}
 		</ul>
