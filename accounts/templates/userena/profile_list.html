@@ -16,7 +16,7 @@
 	<img class="media-object" src="{{ profile.get_mugshot_url }}" />
       </a>
       <div class="media-body">
-	<h4 class="media-heading"><a href="{% url 'userena_profile_detail' profile.user.username %}">{{ profile.get_full_name_or_username }}</a></h4>
+	<h4 class="media-heading"><a href="{% url 'profile-detail' profile.user.username %}">{{ profile.get_full_name_or_username }}</a></h4>
 	<p>Lille, France</p>
 	<i>Trusted by </i><span class="badge badge-inverse">10</span><i> people.</i>
       </div>

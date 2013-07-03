@@ -28,15 +28,17 @@
               <li><a href="/about/">{% trans "About" %}</a></li>
             </ul>
             <ul class="nav pull-right">	      
+	      <!--
               <form class="navbar-search pull-left" action="">
 		<input type="text" class="search-query span2" placeholder="{% trans "Search people" %}">
               </form>
+	      -->
               <li class="divider-vertical"></li>
 	      {% if not user.is_anonymous %}
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i>&nbsp;{{ user.get_profile.get_full_name_or_username}} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="{% url 'userena_profile_detail' user.username %}">{% trans "My profile" %}</a></li>
+                  <li><a href="{% url 'profile-detail' user.username %}">{% trans "My profile" %}</a></li>
 		  {% if user.is_staff %}
 		  <li class="divider"></li>
 		  <li><a href="#">{% trans "Administration" %}</a></li>
