@@ -1,13 +1,32 @@
 {% extends "base.html" %}
-
+{% load sekizai_tags %}
+{% load i18n %}
 
 {% block content %}
 
-<form method='POST' action='?'>
-  {% csrf_token %}
-  {{ form }}
-  <button type='submit'>Ajouter</button>
-</form>
+{% addtoblock "js" %}
+<script type="text/javascript">
+	$(document).ready(function() {
+	$('.hovertooltip').tooltip({});
+});
+</script>
+{% endaddtoblock %}
 
+    <div class="container">
+		 <div class="row">
+			<div class="span12">
+			<legend>{% trans "Add your service" %}</legend>
+			<form method='POST' action='?'>
+			{% csrf_token %}
+			{{ form }}
+			{% blocktrans %}	
+			<p>Insert your username to create a direct link to your profile (<a href="#" data-toggle="tooltip" class="hovertooltip" title="If you select Couchsurfing and use etiennelenoir profile, it will create a direct link to your profile http://www.couchsurfing.org/people/etiennelenoir">example</a>)<p>	
+			{% endblocktrans %}
+			<button type='submit'>{% trans "Add" %}</button>
+			</form>
+			</div>	
+		</div>
+    </div>
+    
 
 {% endblock %}
