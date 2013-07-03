@@ -6,9 +6,9 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseForbidden
 from django.views.generic.edit import FormView
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, ListView
 
-from accounts.models import UserService
+from accounts.models import UserService, Service
 
 from .forms import ServiceAddForm
 
@@ -53,4 +53,13 @@ class ServiceDeleteView(DeleteView):
     def get_success_url(self):
         return reverse('profile-detail', args=(self.request.user.username,))
 
+
+class ServiceListView(ListView):
+    """
+    List all services
+    """
+    model = Service
+    template_name = 'services/service_list.html'
+    context_object_name = 'services'
+    
 

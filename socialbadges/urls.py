@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     url(r'^', include('social_auth.urls')),                       
     url(r'^', include('accounts.urls')),                       
 
-    url(r'^service/', include('services.urls')),
+    url(r'^s/', include('services.urls')),
 )
 
 urlpatterns += i18n_patterns('',

@@ -52,7 +52,7 @@
 					Les <strong>recommandations</strong> sur des sites comme couchsurfing ont une valeur inestimable. En rassemblant celles de tous les sites de partage, cela devient votre outil pour <strong>établir la confiance avec des tiers</strong>...
 					{% endplaceholder %}
 				</div>
-				<a class="btn btn-large btn-primary" href="#">
+				<a class="btn btn-large btn-primary" href="{% url 'userena_profile_list' %}">
 					{% placeholder "carousel_two_button_join" or%}
 					Discover the community
 					{% endplaceholder %}
@@ -74,7 +74,7 @@
 					Naviguez vers de nouveaux services dont vous n'imaginiez même pas l'existence. Votre propre voisin partage peut-être sa cuisine du jour ?
 					{% endplaceholder %}
 				</div>
-				<a class="btn btn-large btn-primary" href="#">
+				<a class="btn btn-large btn-primary" href="{% url 'service-list' %}">
 					{% placeholder "carousel_three_button_join" or%}
 					Browse & discover...
 					{% endplaceholder %}
@@ -110,7 +110,7 @@
 			  Social Badges est un <strong>bien commun</strong> développé sous licence libre (AGPL). Cette plateforme vous appartient, les données que vous y assemblez aussi. Construit en logique contributive, chacun peut participer à sa construction.
 		  </p>
 		  {% endplaceholder %}
-          <p><a class="btn" href="#">{% trans "Join the discussion" %} &raquo;</a></p>
+          <p><a class="btn" target="_new" href="https://rizzoma.com/topic/89300e9296026f3e12ab01ac6094bd9c/0_b_5cb5_41bbi/">{% trans "Join the discussion" %} &raquo;</a></p>
         </div><!-- /.span4 -->
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">

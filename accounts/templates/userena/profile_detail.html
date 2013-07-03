@@ -44,6 +44,18 @@ $(document).ready(function() {
       
       <!-- services -->
       {% regroup badges by category as category_list %}
+
+      {% if not badges %}
+      <div class="well">
+	<h2>{% trans "Hi there!" %}</h2>
+	{% url 'service-add' as service_add_url %}
+	<p>
+	  {% blocktrans with service_add_url=service_add_url %}Looks like you <strong>haven't added any service yet</strong>. Well, you can <a href="{{ service_add_url }}">start right now</a>!{% endblocktrans %}
+	</p>
+
+	<p>{% trans "Once you have added a service, you'll <strong>unlock badges</strong>, such as 'Food Sharer'." %}</p>
+      </div>
+      {% endif %}
       
       {% for category in category_list %}
       <div class="row">
@@ -111,7 +123,7 @@ $(document).ready(function() {
 	  |
 	  {% endif %}
 	  {% if profile.twitter %}	  
-	  <a href="https://twitter.com/{{ profile.twitter }}">{% trans "Twitter" %}</a>
+	  <a href="https://twitter.com/{{ profile.twitter }}">@{{ profile.twitter }}</a>
 	  {% endif %}
 	  </p>
 	</div>
