@@ -20,7 +20,7 @@ class ServiceAddView(FormView):
         return super(ServiceAddView, self).dispatch(request, *args, **kwargs)
     
     def get_success_url(self):
-        return reverse('userena_profile_detail', args=(self.request.user.username,))
+        return reverse('profile-detail', args=(self.request.user.username,))
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
@@ -40,6 +40,6 @@ class ServiceDeleteView(DeleteView):
         return super(ServiceDeleteView, self).dispatch(request, *args, **kwargs)
     
     def get_success_url(self):
-        return reverse('userena_profile_detail', args=(self.request.user.username,))
+        return reverse('profile-detail', args=(self.request.user.username,))
 
 

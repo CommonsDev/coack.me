@@ -16,13 +16,10 @@ urlpatterns = patterns('',
     url(r'^', include('accounts.urls')),                       
 
     url(r'^service/', include('services.urls')),
-
-                       
-    # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
 )
 
 urlpatterns += i18n_patterns('',
+    url(r'^admin/', include(admin.site.urls)),                                                          
     url(r'^', include('cms.urls'))
 )
 

@@ -232,6 +232,8 @@ LOGIN_REDIRECT_URL = '/u/'
 LOGIN_URL = '/u/signin/'
 LOGOUT_URL = '/u/signout/?next=/'
 USERENA_DEFAULT_PRIVACY = 'open'
+USERENA_MUGSHOT_SIZE = 120
+USERENA_MUGSHOT_DEFAULT = 'monsterid'
 
 ANONYMOUS_USER_ID = -1
 AUTH_PROFILE_MODULE = 'accounts.Profile'

@@ -12,10 +12,22 @@ class ServiceCategory(models.Model):
 
 def badge_upload(instance, filename):
     return filename
-        
+
+
+class ServiceBadgeCategory(models.Model):
+    """
+    A category for the badges
+    """
+    name = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
+    
+    
 class ServiceBadge(models.Model):
     description = models.CharField(max_length=255)
     picture = models.ImageField(upload_to=badge_upload, null=True, blank=True)
+    category = models.ForeignKey(ServiceBadgeCategory)
  
     def __unicode__(self):
         return self.description
@@ -35,7 +47,7 @@ class Service(models.Model):
 
     category = models.ForeignKey(ServiceCategory, related_name='services')
 
-    badges = models.ManyToManyField(ServiceBadge)
+    badges = models.ManyToManyField(ServiceBadge, related_name='services')
 
     def __unicode__(self):
         return self.name

@@ -94,10 +94,10 @@ urlpatterns = patterns('',
         ProfileDetailView.as_view(),
         name='profile-detail'),
                        
-    url(r'^page/(?P<page>[0-9]+)/$',
+    url(r'^u/page/(?P<page>[0-9]+)/$',
        userena_views.ProfileListView.as_view(),
        name='userena_profile_list_paginated'),
-    url(r'^$',
+    url(r'^u$',
        userena_views.ProfileListView.as_view(),
        name='userena_profile_list'),
 

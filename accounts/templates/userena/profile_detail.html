@@ -21,52 +21,81 @@
 	</div>
       </div>
 
-
-      {% trans "Age" %}: {{ profile.age|default:"??" }}
-
+      <!-- buttons -->
       <div class="row">
-	<a href="{% url 'service-add' %}">Ajouter un service</a>
+	<div class="offset5 span4 pull-right">
+	  <a class="btn btn-small" href="{% url 'service-add' %}"><i class="icon-plus-sign"></i>&nbsp;{% trans "Add a service" %}</a>
+	  <a class="btn btn-small" href="{% url 'profile-edit' user.username %}"><i class="icon-edit"></i>&nbsp;{% trans "edit your profile"|capfirst %}</a>
+	</div>
       </div>
+
+      <br/>
       
       <!-- services -->
+      {% regroup badges by category as category_list %}
+      
+      {% for category in category_list %}
       <div class="row">
-	{% for service_detailed in profile.service_detailed.all %}
-        {% with service=service_detailed.service %}
-	<ul>
-	{% for badge in service.badges.all %}
-	  <li>
-	    <img width="40px" src="{{ STATIC_URL }}img/badges/_default.jpg" class="img-circle">&nbsp;<strong>{{ badge.description }}</strong> -- <i>vous avez ce badge car vous utilisez <a href="{{ service.website }}">{{ service.name }}</a></i>[<a href="{% url 'service-del' service_detailed.id %}">X</a>] [<a target="_new" href="{{ service.profile_url_template }}{{ service_detailed.username }}">Profile</a>]
-	  </li>
-	{% endfor %}
-	</ul>
-        {% endwith %}
-	{% endfor %}
+	<div class="span2">
+	  <h5>{{ category.grouper }}</h5>
+	</div>
+
+	<div class="span7 pull-right">
+	    {% for badge in category.list %}
+	    <div class="media">
+	      <a class="pull-left" href="#">
+		<img width="40px" class="media-object" src="{{ STATIC_URL }}img/badges/_default.jpg" class="img-circle">
+	      </a>
+	      <div class="media-body">
+		<h5 class="media-heading">{{ badge.description }}</h5>
+		<i>Vous avez ce badge car vous utilisez</i>
+		<ul>
+		  {% for service in badge.user_services %}
+		  <li>
+		    <a href="{{ service.service.website }}">{{ service.service.name }}</a>
+		    [<a href="{% url 'service-del' service.id %}"><i class="icon-remove-sign"></i></a>] [<a target="_new" href="{{ service.service.profile_url_template }}{{ service.username }}">Profile</a>]
+		  </li>
+		  {% endfor %}
+		</ul>
+	      </div>
+	    </div>
+	    {% endfor %} <!-- end badges -->
+	</div>
       </div>
+      <br/>
+      {% endfor %}
+
 
     </div> <!-- .span9 -->
 
     <div class="span3">	
 	<div class="well">
-	  <h4>{% trans "About me" %}</h4>[<a href="{% url 'profile-edit' user.username %}">edit</a>]
+	  <h4>{% trans "About me" %}</h4>
 	  <p>
-	  {{ profile.about_me }}
-	  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+	  {{ profile.about|default:"I'm a human being." }}
 	  </p>
 
+	  <!--
 	  <span class="badge badge-inverse">10</span> 
 	  <a class="btn btn-small" href="#"><i class="icon-star-empty"></i> {% trans "Endorse" %}</a>
+	  -->
+
+	  <hr/>
+	  <p>
+	  {% if profile.location or profile.twitter %}
+	    <i class="icon-home"></i>
+	  {% endif %}
+	  {% if profile.location %}
+	  <a href="{{ profile.website }}">{% trans "Website" %}</a>
+	  {% endif %}
+	  {% if profile.location and profile.twitter %}
+	  |
+	  {% endif %}
+	  {% if profile.twitter %}	  
+	  <a href="https://twitter.com/{{ profile.twitter }}">{% trans "Twitter" %}</a>
+	  {% endif %}
+	  </p>
 	</div>
-
-	<ul>
-	  <li>
-	    <a class="btn btn-small" href="{{ profile.website }}"><i class="icon-home"></i></a> Website
-	  </li>
-	  <li>
-	    <a class="btn btn-small" href="{{ profile.website }}"><i class="icon-random"></i></a> Twitter	    
-	  </li>
-	</ul>
-
-
     </div>
 
   </div>

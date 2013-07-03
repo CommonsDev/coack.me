@@ -18,6 +18,20 @@ class Profile(UserenaBaseProfile):
     services = models.ManyToManyField(Service,
                                       through='UserService')
 
+    location = models.CharField(max_length=50,
+                                null=True, blank=True,
+                                help_text=_("City, Country, ..."))    
+    about = models.TextField(null=True, blank=True,
+                             help_text=_("A few words about you."))
+
+    website = models.URLField(null=True, blank=True)
+    twitter = models.CharField(max_length=100, null=True, blank=True,
+                               help_text=_("Your twitter username"))
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('profile-detail', [self.user.id])
+
 class UserService(models.Model):
     """
     Link a user to a service and stores his username
