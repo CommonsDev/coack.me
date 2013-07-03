@@ -11,3 +11,4 @@ class ServiceAddForm(forms.ModelForm):
     def send_email(self):
         # send email using the self.cleaned_data dictionary
         pass
+
