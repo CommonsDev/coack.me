@@ -228,9 +228,9 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 # USERENA
-LOGIN_REDIRECT_URL = '/u/'
-LOGIN_URL = '/u/signin/'
-LOGOUT_URL = '/u/signout/?next=/'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/signin/'
+LOGOUT_URL = '/signout/?next=/'
 USERENA_DEFAULT_PRIVACY = 'open'
 USERENA_MUGSHOT_SIZE = 120
 USERENA_MUGSHOT_DEFAULT = 'monsterid'
