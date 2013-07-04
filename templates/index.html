@@ -29,12 +29,11 @@
 					<strong>Covoitureur</strong> ? <strong>Couchsurfeur</strong> ? <strong>Prêteur d'objets</strong> ? Revendiquez votre <strong>activité citoyenne</strong> et facilitez le passage à l'acte de ceux qui hésitent encore à utiliser ces services.
 					{% endplaceholder %}
 			</div>
-				<a class="btn btn-large btn-primary" href="#">
+				<a href="#myModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">
 					{% placeholder "carousel_one_button_join" or%}
 					Join and show the world!
 					{% endplaceholder %}
-				</a>
-					
+				</a>					
             </div>
           </div>
         </div>
@@ -100,7 +99,7 @@
 			<b>Co</b>llectively <b>Ack</b>nowledge <b>Me</b>, en Français "Reconnaissez moi collectivement" permet de rassembler sur une seule page l'ensemble des services de collaboration et de citoyenneté que vous utilisez. Vous pouvez mettre en lien vos profils sur ces sites. Un bon moyen pour révéler la richesse des données construites sur ces plateformes.
 			</p>
 			{% endplaceholder %}
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn" href="/about">View details &raquo;</a></p>
         </div><!-- /.span4 -->
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">
@@ -132,4 +131,17 @@
 
     </div><!-- /.container -->
 
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="myModalLabel">{% trans "Join or connect with:" %} </h4>
+	  </div>
+	  <div class="modal-body">
+		<a href="{% url 'socialauth_begin' 'google-oauth2' %}" class="btn btn-danger btn-block">{% trans "Connect with Google" %} | <i class="entypo-gplus"></i></a>
+		<a href="{% url 'socialauth_begin' 'facebook' %}" class="btn btn-primary btn-block">{% trans "Connect with Facebook" %} | <i class="entypo-facebook"></i></a>
+	  </div>
+	  <div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	  </div>
+	</div>
 {% endblock %}
