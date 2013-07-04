@@ -1,4 +1,4 @@
-# Django settings for socialbadges project.
+# Django settings for coack project.
 import os
 
 PROJECT_DIR = os.path.dirname(__file__)
@@ -116,10 +116,10 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.language.LanguageCookieMiddleware',    
 )
 
-ROOT_URLCONF = 'socialbadges.urls'
+ROOT_URLCONF = 'coack.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'socialbadges.wsgi.application'
+WSGI_APPLICATION = 'coack.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

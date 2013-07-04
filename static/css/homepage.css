@@ -1,63 +1,74 @@
 /* CUSTOMIZE THE CAROUSEL
     -------------------------------------------------- */
+/* Carousel base class */
+/* line 5, ../sass/homepage.scss */
+.carousel {
+  margin-bottom: 30px;
+}
 
-    /* Carousel base class */
-    .carousel {
-      margin-bottom: 30px;
-    }
+/* line 9, ../sass/homepage.scss */
+.carousel .container {
+  position: relative;
+  z-index: 9;
+}
 
-    .carousel .container {
-      position: relative;
-      z-index: 9;
-    }
+/* line 14, ../sass/homepage.scss */
+.carousel-control {
+  height: 80px;
+  margin-top: 0;
+  font-size: 120px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  background-color: transparent;
+  border: 0;
+  z-index: 10;
+}
 
-    .carousel-control {
-      height: 80px;
-      margin-top: 0;
-      font-size: 120px;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-      background-color: transparent;
-      border: 0;
-      z-index: 10;
-    }
+/* line 24, ../sass/homepage.scss */
+.carousel .item {
+  height: 500px;
+}
 
-    .carousel .item {
-      height: 500px;
-    }
-    .carousel img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      height: 500px;
-    }
+/* line 27, ../sass/homepage.scss */
+.carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
 
-    .carousel-caption {
-      background-color: transparent;
-      position: static;
-      max-width: 700px;
-      padding: 0 20px;
-      margin-top: 200px;
-    }
-    .carousel-caption h1,
-    .carousel-caption .lead {
-      margin: 0;
-      line-height: 1.25;
-      color: #fff;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-    }
-    .carousel-caption .btn {
-      margin-top: 10px;
-    }
+/* line 35, ../sass/homepage.scss */
+.carousel-caption {
+  background-color: transparent;
+  position: static;
+  max-width: 700px;
+  padding: 0 20px;
+  margin-top: 200px;
+}
 
+/* line 43, ../sass/homepage.scss */
+.carousel-caption h1,
+.carousel-caption .lead {
+  margin: 0;
+  line-height: 1.25;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* line 49, ../sass/homepage.scss */
+.carousel-caption .btn {
+  margin-top: 10px;
+}
 
 @media (max-width: 979px) {
+  /* line 56, ../sass/homepage.scss */
+  .carousel .item {
+    height: 500px;
+  }
 
-      .carousel .item {
-        height: 500px;
-      }
-      .carousel img {
-        width: auto;
-        height: 500px;
-      }
+  /* line 59, ../sass/homepage.scss */
+  .carousel img {
+    width: auto;
+    height: 500px;
+  }
 }
