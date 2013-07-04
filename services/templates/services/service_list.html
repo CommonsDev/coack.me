@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{% trans "Discover Services" %}</h1>
+  {% regroup services by category as category_list %}
+
+  {% for category in category_list %}
+  <h2>{{ category.grouper }}</h2>
+  
+  {% for service in category.list %}
+  <div class="row">
+    <div class="span9">
+      <a href="{{ service.website }}">{{ service.name }}</a> -- {{ service.description }}
+    </div>
+  </div>
+  {% endfor %}
+  {% endfor %}
+
+</div>
+
+{% endblock %}

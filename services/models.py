@@ -17,6 +17,9 @@ def badge_upload(instance, filename):
 def badgecat_upload(instance, filename):
     return os.path.join("badgecats", filename)
 
+def service_upload(instance, filename):
+    return os.path.join("services", filename)
+    
 class ServiceBadgeCategory(models.Model):
     """
     A category for the badges
@@ -32,6 +35,7 @@ class ServiceBadge(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=255)
     picture = models.ImageField(upload_to=badge_upload, null=True, blank=True)
+    picto = models.CharField(max_length=255, null=True, blank=True)
     category = models.ForeignKey(ServiceBadgeCategory)
  
     def __unicode__(self):
@@ -47,7 +51,7 @@ class Service(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     website = models.URLField()
-    logo_url = models.URLField()
+    logo = models.ImageField(upload_to=service_upload, null=True, blank=True)
     profile_url_template = models.CharField(max_length=255)
 
     category = models.ForeignKey(ServiceCategory, related_name='services')

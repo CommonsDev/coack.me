@@ -33,9 +33,11 @@ $(document).ready(function() {
       <!-- buttons -->
       {% if profile.user == user %}
       <div class="row">
-	<div class="offset5 span4 pull-right">
-	  <a class="btn btn-small" href="{% url 'service-add' %}"><i class="icon-plus-sign"></i>&nbsp;{% trans "Add a service" %}</a>
-	  <a class="btn btn-small" href="{% url 'profile-edit' user.username %}"><i class="icon-edit"></i>&nbsp;{% trans "edit your profile"|capfirst %}</a>
+	<div class="offset5 span4">
+	  <div class="pull-right">
+	    <a class="btn btn-small" href="{% url 'service-add' %}"><i class="icon-plus-sign"></i>&nbsp;{% trans "Add a service" %}</a>
+	    <a class="btn btn-small" href="{% url 'profile-edit' user.username %}"><i class="icon-edit"></i>&nbsp;{% trans "edit your profile"|capfirst %}</a>
+	  </div>
 	</div>
       </div>
       {% endif %}
@@ -58,42 +60,55 @@ $(document).ready(function() {
       {% endif %}
       
       {% for category in category_list %}
-      <div class="row">
-	<div class="span2">
-	  <h5>{{ category.grouper }}</h5>
-	</div>
-
-	<div class="span7 pull-right">
+      <div class="row badges-cat-container">
+	  <div class="span9">
+	    <h4 class='badge-category'><i class="entypo-right-dir"></i>&nbsp;{{ category.grouper }}</h4>
+	  </div>
+	<div class="row">
+	  <ul class="ca-menu">
 	    {% for badge in category.list %}
-	    <div class="media">
-	      <div class="pull-left tipinfo" data-title="{{ badge.description }}">
-		<img width="40px" class="media-object" src="{{ STATIC_URL }}img/badges/_default.jpg" class="img-circle">
-	      </div>
-	      <div class="media-body">
-		<h5 class="media-heading">{{ badge.name }}</h5>
-		<i>Vous avez ce badge car vous utilisez</i>
-		<ul>
-		  {% for service in badge.user_services %}
-		  <li>
-		    <a class="popinfo" 
-		       data-title="<a href='{{ service.service.website }}'>{{ service.service.name }}</a>" 
-		       data-content="<img src='{{ service.service.logo_url }}' alt='{{ service.service.name }}'/><br/>{{ service.service.description }}"
-		       href="{{ service.service.website }}"
-		       >{{ service.service.name }}
-		    </a>
-		    {% if profile.user == user %}
-		    <a href="{% url 'service-del' service.id %}"><i class="icon-remove-sign"></i></a>
-		    {% endif %}
-		    [<a target="_new" href="{{ service.service.profile_url_template }}{{ service.username }}">{% trans "Profile" %}</a>]
-		  </li>
-		  {% endfor %}
-		</ul>
-	      </div>
-	    </div>
+	      <li class="span3">
+		  <ul class="user_services">
+		    {% for service in badge.user_services %}
+		    <li>
+		      <a class="popinfo" 
+			 data-title="<a href='{{ service.service.website }}'>{{ service.service.name }}</a>" 
+			 data-content="{{ service.service.description }}"
+			 data-container="body"
+			 href="{{ service.service.profile_url_template }}{{ service.username }}"
+			 target="_new"
+			 >
+			{% if service.service.logo %}
+			<img width="30px" height="30px" src='{{ service.service.logo.url }}' alt='{{ service.service.name }}'/>
+			{% else %}
+			{{ service.service.name }}
+			{% endif %}
+		      </a>
+		      <!--
+			  {% if profile.user == user %}
+			  <a href="{% url 'service-del' service.id %}"><i class="icon-remove-sign"></i></a>
+			{% endif %}
+			  [<a target="_new" href="{{ service.service.profile_url_template }}{{ service.username }}">{% trans "Profile" %}</a>]
+			-->
+		    </li>
+		    {% endfor %}
+		  </ul>
+		    <span class="ca-icon">
+		      {% if badge.picture %}
+		      <img width="40px" src="{{ badge.picture.url }}" class="img-circle">
+		      {% else %}
+		      <i class="{{ badge.picto }}"></i>
+		      {% endif %}
+		    </span>
+		    <div class="ca-content">
+                      <h2 class="ca-main">{{ badge.name }}</h2>
+                      <h3 class="ca-sub">{{ badge.description }}</h3>
+		    </div>
+	      </li>
 	    {% endfor %} <!-- end badges -->
+	  </ul>
 	</div>
       </div>
-      <br/>
       {% endfor %}
 
 
@@ -126,6 +141,15 @@ $(document).ready(function() {
 	  <a href="https://twitter.com/{{ profile.twitter }}">@{{ profile.twitter }}</a>
 	  {% endif %}
 	  </p>
+	</div>
+	
+
+	<div>
+	  <a class="btn btn-info btn-block" 
+	     href="http://twitter.com/share?url={{ request.build_absolute_uri|urlencode }}&text={{ "Now you can trust me, what about you?"|urlencode }}&related=&count=vertical&lang=en"
+	     target="popup">
+	    {% trans "Share this profile on" %} <i class="entypo-twitter"></i>
+	  </a>
 	</div>
     </div>
 
