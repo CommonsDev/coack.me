@@ -242,6 +242,7 @@ AUTH_PROFILE_MODULE = 'accounts.Profile'
 CMS_TEMPLATES = (
     ('index.html', 'Homepage'),
     ('page.html', 'Page'),
+    ('donation.html','Donation'),
 )
 
 # SOCIAL
