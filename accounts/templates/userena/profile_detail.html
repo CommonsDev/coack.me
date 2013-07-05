@@ -45,6 +45,14 @@ $(document).ready(function() {
       <br/>
       
       <!-- services -->
+      <ul class="nav nav-tabs">
+	<li class="active"><a data-toggle="tab" href="#user-badges">{% trans "Badges" %}</a></li>
+	<li><a data-toggle="tab" href="#user-services">{% trans "Services" %}</a></li>
+      </ul>
+
+
+      <div class="tab-content">
+      <div class="tab-pane active" id="user-badges">
       {% regroup badges by category as category_list %}
 
       {% if not badges %}
@@ -84,12 +92,6 @@ $(document).ready(function() {
 			{{ service.service.name }}
 			{% endif %}
 		      </a>
-		      <!--
-			  {% if profile.user == user %}
-			  <a href="{% url 'service-del' service.id %}"><i class="icon-remove-sign"></i></a>
-			{% endif %}
-			  [<a target="_new" href="{{ service.service.profile_url_template }}{{ service.username }}">{% trans "Profile" %}</a>]
-			-->
 		    </li>
 		    {% endfor %}
 		  </ul>
@@ -111,6 +113,30 @@ $(document).ready(function() {
       </div>
       {% endfor %}
 
+      </div> <!-- user-badges -->
+
+      <div class="tab-pane" id="user-services">
+	<h5>
+	{% if profile.user == request.user %}
+	  {% trans "Services I use" %}
+	{% else %}
+   	  {% trans "Services used by" %} {{ profile.user.first_name|default:profile.user.username }}
+	{% endif %}
+	</h5>
+	<ul>
+	{% for service_detailed in profile.service_detailed.all %}
+	<li>
+	  {{ service_detailed.service.name }}
+	  {% if profile.user == user %}
+	  <a href="{% url 'service-del' service_detailed.id %}" class="tipinfo" data-title="{% trans 'Remove this service from your profile' %}"><i class="icon-remove-sign"></i></a>
+	  {% endif %}
+	  [<a target="_new" href="{{ service_detailed.service.profile_url_template }}{{ service_detailed.username }}">{% trans "Profile" %}</a>]
+	</li>
+	{% endfor %}
+	</ul>
+      </div>
+      </div>
+      
 
     </div> <!-- .span9 -->
 
