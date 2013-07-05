@@ -4,6 +4,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/css3/transform";
 
 @import url('http://weloveiconfonts.com/api/?family=entypo');
 @import url('http://weloveiconfonts.com/api/?family=maki');
@@ -20,6 +21,41 @@
   font-family: 'maki', sans-serif;
 }
 
+/* base */
+#feedback-button {
+    a {
+	font-family: 'Dosis';
+	font-size: 22px;
+	margin: 0px;
+	color: white;
+    }
+
+    padding: 6px;
+    position: fixed;
+    top: 30%;
+    right: -28px;
+    z-index: 10000;
+    background-color: #D93A05;
+
+    text-decoration: none;
+    @include rotate(270deg);
+}
+
+#feedback-form {
+    ul li {
+	display: inline;
+    }
+
+    input {
+	width: 90%;
+    }
+
+    textarea {
+	width: 90%;
+	height: 50px;
+    }
+}
+
 
 /* Profile page */
 .badge-category {
@@ -28,14 +64,11 @@
 }
 
 .badges-cat-container {
-    border-left: 10px solid red;
-    background-color: #f5f5f5;
+//    border-left: 10px solid red;
+ //   background-color: #f5f5f5;
     padding-bottom: 20px;
-    
-    ul {
-	margin: 0px;
-    }
-}
+}    
+
 
 .ca-menu {
 

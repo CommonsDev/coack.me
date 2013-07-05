@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CoAck.me -- Collectively Acknowledge Me</title>
+    <title>Coack.me - {% trans "Building trust between People" %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{{ STATIC_URL }}css/screen.css" rel="stylesheet" media="screen">
@@ -80,11 +80,39 @@
     </div>
     {% endif %}
 
+
     {% block content %}
     <h1>Hello, world!</h1>
     {% endblock %}
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     {% render_block "js" %}
+
+
+    <!-- feedback  -->
+    <div id="feedback-button">
+      <a href="#feedback-modal" data-toggle="modal">
+      {% trans "Feedback" %}
+      </a>
+    </div>
+
+    <div id="feedback-modal" class="modal hide fade">
+      <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3>{% trans "Leave feedback!" %}</h3>
+      </div>
+	<div class="modal-body">
+	  <form id="feedback-form" method="POST" action="{% url 'feedback-new' %}">
+	    {% csrf_token %}
+	    {{ backcap_feedback_form }}
+	</div>
+	<div class="modal-footer">
+	  <button type="submit" class="btn btn-primary">{% trans "Send!" %}</button>
+	</form>
+	</div>
+    </div>
+
+
+
   </body>
 </html>

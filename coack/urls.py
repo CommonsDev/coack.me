@@ -16,9 +16,10 @@ urlpatterns = patterns('',
     url(r'^home$', TemplateView.as_view(template_name='index.html'), name='home'),
                        
     url(r'^', include('social_auth.urls')),                       
-    url(r'^', include('accounts.urls')),                       
+    url(r'^', include('accounts.urls')),
 
     url(r'^s/', include('services.urls')),
+    url(r'^feedback/', include('backcap.urls')),
 )
 
 urlpatterns += i18n_patterns('',

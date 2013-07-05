@@ -7,6 +7,8 @@ django-userena==1.2.1
 django-reversion
 django-social-auth
 
+-e git+https://github.com/SpreadBand/django-backcap.git#egg=django-backcap
+
 # cms
 django-cms==2.4.1
 djangocms-text-ckeditor==1.0.10

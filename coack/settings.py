@@ -142,6 +142,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
                                'social_auth.context_processors.social_auth_by_type_backends',
                                'social_auth.context_processors.social_auth_login_redirect',                               
                                'cms.context_processors.media',
+                               'backcap.context_processors.backcap_forms',
                                'sekizai.context_processors.sekizai',)
 
 
@@ -165,6 +166,9 @@ INSTALLED_APPS = (
     'reversion',
     'social_auth',
 
+    'notification',
+    'voting',
+    'backcap',
     'coack',
     'cms',
     'mptt',
@@ -249,6 +253,9 @@ CMS_TEMPLATES = (
 # SOCIAL
 SOCIAL_AUTH_RAISE_EXCEPTIONS = DEBUG
 FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 from site_settings import *
 

@@ -101,5 +101,5 @@ urlpatterns = patterns('',
        userena_views.ProfileListView.as_view(),
        name='userena_profile_list'),
 
-
+    url(r'^notifications/', include('notification.urls'))
 )

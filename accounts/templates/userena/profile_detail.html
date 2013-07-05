@@ -69,9 +69,9 @@ $(document).ready(function() {
       
       {% for category in category_list %}
       <div class="row badges-cat-container">
-	  <div class="span9">
-	    <h4 class='badge-category'><i class="entypo-right-dir"></i>&nbsp;{{ category.grouper }}</h4>
-	  </div>
+	<div class="span9">
+	  <h4 class='badge-category'><i class="entypo-right-dir"></i>&nbsp;{{ category.grouper }}</h4>
+	</div>
 	<div class="row">
 	  <ul class="ca-menu">
 	    {% for badge in category.list %}
