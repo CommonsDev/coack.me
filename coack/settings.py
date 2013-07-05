@@ -164,7 +164,8 @@ INSTALLED_APPS = (
     'sekizai',
     'reversion',
     'social_auth',
-    
+
+    'coack',
     'cms',
     'mptt',
     'menus',
