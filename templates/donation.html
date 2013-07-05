@@ -17,14 +17,17 @@
  <div class="container">
 		 <div class="row">
 			<div class="span12">
-			<legend>{% trans "Donate to Coack.me" %}</legend>
-			{% blocktrans %}
-			<p>CoAck.me is developped only by passionated contribution. 
+			{% placeholder "Text one" or %}
+			<legend>Help this platform to grow</legend>
+			<p>CoAck.me is developped by passionated contribution. 
 			<p>Give a tip to help this service to grow (actual goal is to get 50$/week) : </p> 
-			{% endblocktrans %}
+			{% endplaceholder %}
 			<script data-gittip-username="CoAckMe"
 			src="https://www.gittip.com/assets/widgets/0002.js">
 			</script>
+			{% placeholder "Text two" or %}
+			<h6>All expenses are explained <a href="https://docs.google.com/spreadsheet/ccc?key=0AjUW0ZSBFWPedEZNbzRoMlJfdXhHbk9nZDRIYkQ4TFE&usp=sharing">on this document</a>.</h6> 
+			{% endplaceholder %}
 			</div>	
 		</div>
     </div>
