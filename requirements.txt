@@ -14,3 +14,5 @@ django-cms==2.4.1
 djangocms-text-ckeditor==1.0.10
 
 psycopg2
+django-notification==1.1
+django-voting
