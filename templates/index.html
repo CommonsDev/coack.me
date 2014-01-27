@@ -26,8 +26,7 @@
 				</h1>
 			<div class="lead">
 					{% placeholder "carousel_one_text" or%}
-					<strong>Covoitureur</strong> ? <strong>Couchsurfeur</strong> ? <strong>Prêteur d'objets</strong> ? Revendiquez votre <strong>activité citoyenne</strong> et facilitez le passage à l'acte de ceux qui hésitent encore à utiliser ces services.
-					{% endplaceholder %}
+					<strong>Practicing carpooling ? </strong> couchsurfing </strong> ? <strong> sharing goods </strong> ? Claim your <strong> citizen activities</strong> and show the way to people still hesitating to use those collaboraitve services.		{% endplaceholder %}
 			</div>
 				<a href="#myModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">
 					{% placeholder "carousel_one_button_join" or%}
@@ -48,7 +47,8 @@
 				</h1>
 				<div class="lead">
 					{% placeholder "carousel_two_text" or%}
-					Les <strong>recommandations</strong> sur des sites comme couchsurfing ont une valeur inestimable. En rassemblant celles de tous les sites de partage, cela devient votre outil pour <strong>établir la confiance avec des tiers</strong>...
+					 <strong>Recommandations</strong> on websites like CouchSurfing are priceless. Gathering all the sharing web plateforms, CoAck becomes a tool <strong>to establish trust between peers.
+</strong>...
 					{% endplaceholder %}
 				</div>
 				<a class="btn btn-large btn-primary" href="{% url 'userena_profile_list' %}">
@@ -70,7 +70,7 @@
 				</h1>
 				<div class="lead">
 					{% placeholder "carousel_three_text" or%}
-					Naviguez vers de nouveaux services dont vous n'imaginiez même pas l'existence. Votre propre voisin partage peut-être sa cuisine du jour ?
+Browse to news services you still ignore the existance : Your own neighbour may propose to share his dish today ?					
 					{% endplaceholder %}
 				</div>
 				<a class="btn btn-large btn-primary" href="{% url 'service-list' %}">
@@ -96,7 +96,7 @@
 			{% placeholder "text_bottom_1" or%}
 			<h2>CoAck.me?</h2>
 			<p>
-			<b>Co</b>llectively <b>Ack</b>nowledge <b>Me</b>, en Français "Reconnaissez moi collectivement" permet de rassembler sur une seule page l'ensemble des services de collaboration et de citoyenneté que vous utilisez. Vous pouvez mettre en lien vos profils sur ces sites. Un bon moyen pour révéler la richesse des données construites sur ces plateformes.
+			<b>Co</b>llectively <b>Ack</b>nowledge <b>Me</b>, allows you to gather all the collaborative and citizen services you use in just one page profil. You can also steer people to your profiles from it then. CoAck has been thinking to reveal wealth built on those plateforms.
 			</p>
 			{% endplaceholder %}
           <p><a class="btn" href="/about">View details &raquo;</a></p>
@@ -104,19 +104,20 @@
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">
           {% placeholder "text_bottom_2" or%}
-          <h2>Contribuez</h2>
+          <h2>A common</h2>
           <p>
-			  CoAck.me est un <strong>bien commun</strong> développé sous licence libre AGPL et disponible sur <a href="https://github.com/UnissonCo/coack.me">Github</a>. Cette plateforme vous appartient, les données que vous y assemblez aussi. Construit en logique contributive, chacun peut participer à sa construction.
+			  CoAck.me is a <strong>common good</strong>. What does it mean ? It means that CoAck is made and hold by its users themselves. The website has been coded under a free licence so your can check the data and modify them. Build in a contributive logic, everyone is free to participate.  
 		  </p>
 		  {% endplaceholder %}
-          <p><a class="btn" target="_new" href="https://rizzoma.com/topic/89300e9296026f3e12ab01ac6094bd9c/0_b_5cb5_41bbi/">{% trans "Join the discussion" %} &raquo;</a></p>
+          <p><a class="btn" target="_new" href="https://rizzoma.com/topic/89300e9296026f3e12ab01ac6094bd9c/0_b_5cb5_41bbi/">{% trans "Contribute" %} &raquo;</a></p>
         </div><!-- /.span4 -->
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">
           {% placeholder "text_bottom_3" or%}
-          <h2>Support & donate</h2>
+          <h2>Support </h2>
           <p>
-          Pour encourager le projet (nouvelles fonctionnalités, améliorations, ...), vous pouvez faire des micro-dons. Cela permet d'éviter la mise en place de modèles économiques détournés (ex: publicité) ou de faire intervenir des investisseurs extérieurs non concernés par la finalité du projet.
+         If you want to support CoAck initiative but you do not feel like working on directly, you can still make micro-donations through <a target="_blank" href="https://www.gittip.com/Coackme/">{% trans "Gittip" %} &raquo;</a></p>
+Gifts helps CoAck community to improve the plateform without having to ask investors not concerned by CoAck aims or implementing adds. On <a target="_blank" href="https://www.gittip.com/Coackme/">{% trans "Gittip" %} &raquo;</a></p> you can exactly see how much does CoAck has and who is taking the money.
           </p>
           {% endplaceholder %}
           <p><a class="btn" href="donation">{% trans "Make a donation" %} &raquo;</a></p>
