@@ -2,11 +2,14 @@
 
 {% block content %}
 
-<form method='POST' action='?'>
-  {% csrf_token %}
-  Supprimer {{ object.service }} ?
-  <input type='hidden' name='pk' value='{{ object.pk }}'>
-  <button type="submit">Supprimer</button>
-</form>
-
+<div class="row">
+  <div class="hero-unit span6 offset3" style="margin-top: 50px">
+    <form method='POST' action='?'>
+      {% csrf_token %}
+      Supprimer {{ object.service }} ?
+      <input type='hidden' name='pk' value='{{ object.pk }}'>
+      <button type="submit">Supprimer</button>
+    </form>
+  </div>
+</div>
 {% endblock %}
